@@ -4,7 +4,7 @@ CREATE TABLE utenti(
 
 codiceFisc char(16) not null primary key,
 nome varchar(20) not null,
-cognome varchar(2) not null,
+cognome varchar(20) not null,
 tipo varchar(20) not null
 );
 
@@ -31,11 +31,11 @@ insert into utenti(codiceFisc, nome, cognome, tipo)
 values("baaaaaaaaaaaaaaa","shu", "4", "akalimain");
 
 insert into categorie(cod, descrizione)
-values("01","stacca i denti a morsi");
+values("01","stacca i denti");
 insert into categorie(cod, descrizione)
-values("02","vende gli organi");
+values("02","fa i trapianti");
 insert into categorie(cod, descrizione)
-values("03","rewqdr");
+values("03","weiugfwuhegf");
 
 insert into privilegi(codFisc, categoria)
 values("daaaaaaaaaaaaaaa","01");

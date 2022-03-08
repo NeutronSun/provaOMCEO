@@ -19,7 +19,7 @@
   <div id="dinamicHTML">
   <?php
   if (isset($_POST["key"])) {
-    $servername = "localhost"; //il DBMR è sul server web
+    $servername = "localhost";
     $username = "root"; 
     $password = ""; 
     $db = "dentoni"; 
@@ -30,34 +30,50 @@
       die("Connection failed: " . $conn->connect_error);
     }
 
-    $query = "SELECT cod, descrizione FROM (categorie JOIN privilegi ON categorie.cod = privilegi.categoria) JOIN utenti ON utenti.codiceFisc = privilegi.codFisc WHERE utenti.codiceFisc = '".$_POST['key']."';";
-    $result = $conn->query($query);
-    
-    if ($result->num_rows > 0) {
-    
-        //recupero i valori dal database e costruisco la tabella
-        echo("<table>");
+
+    $queryCF = "SELECT * FROM utenti WHERE codiceFisc = '".$_POST['key']."';";
+    $user = $conn->query($queryCF)->fetch_assoc();
+    if($user != null){
+      $query = "SELECT cod, descrizione FROM (categorie JOIN privilegi ON categorie.cod = privilegi.categoria) JOIN utenti ON utenti.codiceFisc = privilegi.codFisc WHERE utenti.codiceFisc = '".$_POST['key']."';";
+      $result = $conn->query($query);
+      makeTableUser($user);
+      echo("<table>");
+      echo("<tr>");
+      echo("<th id = 'left'>Codice Della Categoria (tot ".$result->num_rows.") </th>");
+      echo("<th id = 'right'>Descrizione</th>");
+      echo("</tr>");
+      
+      while($row = $result->fetch_assoc()) {
         echo("<tr>");
-        echo("<th id = 'left'>Codice Della Categoria </th>");
-        echo("<th id = 'right'>Descrizione</th>");
+        echo("<td>" . $row["cod"]. "</td>");
+        echo("<td>" . $row["descrizione"]. "</td>");
         echo("</tr>");
-    
-        while($row = $result->fetch_assoc()) {
-          echo("<tr>");
-          echo("<td>" . $row["cod"]. "</td>");
-          echo("<td>" . $row["descrizione"]. "</td>");
-          echo("</tr>");
-    
-        }
-    
-        echo("</table>");
-        echo("<br/>Risultati: <b>" . $result->num_rows . "</b>");
-    
-    } else {
-        echo("<br/>Non sei registrato nel database sry</br>");
+      
+      }
+      
+      echo("</table>");
+      $conn->close();
+    }else{
+      echo("Non hai accesso a questa pagina.");
     }
-    $conn->close();
 }
+
+
+  function makeTableUser($user) {
+    echo("<table>");
+    echo("<tr>");
+    echo("<th id = 'left'>Nome</th>");
+    echo("<th>Cognome</th>");
+    echo("<th>Codice Fiscale</th>");
+    echo("<th id = 'right'>Categoria</th>");
+    echo("</tr>");
+    echo("<tr>");
+    echo("<td>" . $user["nome"]. "</td>");
+    echo("<td>" . $user["cognome"]. "</td>");
+    echo("<td>" . $user["codiceFisc"]. "</td>");
+    echo("<td>" . $user["tipo"]. "</td>");
+    echo("</tr>");
+  }
   ?>
   </div>
 </div>
