@@ -39,9 +39,9 @@ body {
     table {
 	border-radius: 15px 15px 15px 15px;
     border-collapse: collapse;
-    max-width: 400px;
 	background: #ffffff;
     }
+
     
 	#left{
 	border-radius: 15px 0px 0px 0px;
@@ -65,4 +65,7 @@ body {
 
     #dinamicHTML{
         padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+
     }

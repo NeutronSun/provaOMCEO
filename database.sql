@@ -16,8 +16,8 @@ descrizione varchar(255) not null
 
 CREATE TABLE privilegi(
 
-codFisc char(16) not null unique REFERENCES utenti(codiceFisc),
-categoria int(2) not null unique REFERENCES categoria(cod),
+codFisc char(16) not null REFERENCES utenti(codiceFisc),
+categoria int(2) not null REFERENCES categoria(cod),
 
 PRIMARY KEY (codFisc, categoria)
 );

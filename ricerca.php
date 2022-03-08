@@ -30,7 +30,7 @@
       die("Connection failed: " . $conn->connect_error);
     }
 
-    $query = "SELECT cod, descrizione, nome FROM (categorie JOIN privilegi ON categorie.cod = privilegi.categoria) JOIN utenti ON utenti.codiceFisc = privilegi.codFisc WHERE utenti.codiceFisc = '".$_POST['key']."';";
+    $query = "SELECT cod, descrizione FROM (categorie JOIN privilegi ON categorie.cod = privilegi.categoria) JOIN utenti ON utenti.codiceFisc = privilegi.codFisc WHERE utenti.codiceFisc = '".$_POST['key']."';";
     $result = $conn->query($query);
     
     if ($result->num_rows > 0) {
@@ -38,12 +38,11 @@
         //recupero i valori dal database e costruisco la tabella
         echo("<table>");
         echo("<tr>");
-        echo("<th id = 'left'>codiceCategoria</th>");
+        echo("<th id = 'left'>Codice Della Categoria </th>");
         echo("<th id = 'right'>Descrizione</th>");
         echo("</tr>");
     
         while($row = $result->fetch_assoc()) {
-          echo("<br/>Welcomeback ".$row["nome"]."</br>");
           echo("<tr>");
           echo("<td>" . $row["cod"]. "</td>");
           echo("<td>" . $row["descrizione"]. "</td>");
