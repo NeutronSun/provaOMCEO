@@ -3,31 +3,60 @@ html, body{height:100%;}
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important;
     /* thanks to https://cssgradient.io/gradient-backgrounds/ */
-    background-color: #85FFBD;
-    background-image: linear-gradient(30deg, #85FFBD 0%, #FFFB7D 100%);
-
+    background-color: #d9a7c7;
+    background-image: linear-gradient(30deg, #d9a7c7 0%, #fcede8 100%);
     
     }
+
 	
     #content{
         max-width: 500px;
         margin: auto;
 		height:100%;
     }
+
+
+    input[type="submit"]:hover {
+       background-position: right center; /* change the direction of the change here */
+       color: #fff;
+       text-decoration: none;
+     }
+    
      
     input {
     padding: 10px;
     font-size: 16px;
 	border-radius: 10px;
 	border: 1px solid black;
+    background-color: #ffdad0;
+    transition: 0.5s;
     }
-     
+    input:focus {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid black;
+        background-color: #ffdad0;
+        box-shadow: 3px 3px 30px 2px #fff;
+    }
+    input:hover {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid black;
+        background-color: #ffdad0;
+        box-shadow: 3px 3px 30px 2px #fff;
+    }
+    input[type="submit"]{background-image: linear-gradient(to right, #ee9ca7 0%, #ffdde1  51%, #ee9ca7  100%)}
     input[type="submit"]{
-    background: #7cbcf0;
-	border-radius: 15px;
-    color:#000;
-    border: 1px solid black;
-    min-width: 80px;
+        text-align: center;
+        text-transform: uppercase;
+        transition: 0.5s;
+        background-size: 200% auto;
+        color: white;            
+        box-shadow: 0 0 20px #eee;
+        border-radius: 15px;
+        min-width: 80px;
     }
      
     hr {
@@ -37,6 +66,10 @@ body {
     table, td, th {
    /* border: 1px solid #ddd;*/
     text-align: left;
+    position: relative;
+    animation-name: mymove;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
     }
 	 
     table {
@@ -44,6 +77,27 @@ body {
     border-collapse: collapse;
 	background: #ffffff;
     }
+    table:hover{
+        border-radius: 15px 15px 15px 15px;
+        border-collapse: collapse;
+        background: #ffffff;
+        animation:  shake 0.4s;
+    }
+    @keyframes shake{
+        0%{
+          transform: translateX(0)
+        }
+        25%{
+          transform: translateX(25px);
+        }
+          
+        50%{
+          transform: translateX(-25px);
+        }
+        100%{
+          transform: translateX(0px);
+        }
+      }
 
     
 	#left{
@@ -57,7 +111,7 @@ body {
     }
      
     th{
-    background: #7cbcf0;
+    background: #fdc9bb;
     }
 
     
@@ -72,3 +126,4 @@ body {
         flex-direction: column;
         gap: 12px;
     }
+

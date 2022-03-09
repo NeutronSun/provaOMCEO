@@ -7,7 +7,9 @@
 </head>
 <body>
 <div id="content">
-  <img src="img/logo.png" width="500">
+  <div class="logo">
+    <img src="img/logo.png" width="500">
+  </div>
 
   <div id="form">
     <form action="ricerca.php" method="post">
